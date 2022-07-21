@@ -1,12 +1,14 @@
 require_relative 'game.rb'
 require_relative 'display.rb'
+require 'time'
+require 'date'
 
 include Display
 
 def playing
   puts "Would you like to play a game?\nType y for yes and n for no.\n"
   reply = gets.chomp.downcase
-  if reply == y
+  if reply == "y"
     true
   else
     false
@@ -16,7 +18,7 @@ end
 def save_game?(game1)
   puts "Would you like to save your game?\nType y for yes and n for no.\n"
   reply = gets.chomp.downcase
-  if reply == yes
+  if reply == "y"
     save_game(game1)
   else
     return
@@ -24,10 +26,20 @@ def save_game?(game1)
 end
 
 def save_game(game1)
-  puts "in game method"
-  # create file
-  # serialize game class object
-  # write the serialized data to the file
+  Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
+
+  time = Time.now.to_s
+  date = Date.today.to_s
+
+  filename = "saved_games/#{time}-#{date}-game.txt"
+
+  File.open(filename, 'w') do |file|
+    puts "hi"
+  end
+end
+
+def pull_up_saved_games
+
 end
 
 def new_or_saved_game?
