@@ -2,15 +2,14 @@ require_relative "display.rb"
 class Game
   include Display
 
-  def initialize
+  def initialize(dictionary=[], word=nil)
     @dictionary = []
     @word = choose_word
-    start_game
+    play_game
   end
 
-  def start_game
+  def play_game
     print_greeting
-    puts "the word is #{@word}"
 
   end
 
@@ -25,5 +24,6 @@ class Game
   def generate_rand_num(max_size)
     rand_num = rand(max_size)
   end
+
 
 end
