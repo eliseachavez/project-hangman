@@ -45,10 +45,24 @@ class Game
     })
   end
 
-  def self.from_yaml(string)
+  def from_yaml(string)
+    #File.read reads a file into a string
     #turn string hash into obj
     data = YAML.load string
-    self.new(data[:dictionary], data[:word_in_progress], data[:past_guesses], data[:word])
+    @dictionary = data[:dictionary]
+    @word_in_progress = data[:word_in_progress]
+    @past_guesses = data[:past_guesses]
+    @word = data[:word]
+  end
+
+  def save_game(game1)
+    Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
+
+    filename = "saved_games/#{Date.today.to_s}-game.txt"
+
+    File.open(filename, 'w') do |file|
+      file.puts game1.to_yaml
+    end
   end
 
 end

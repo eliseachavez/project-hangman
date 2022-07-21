@@ -25,10 +25,19 @@ def save_game?(game1)
   end
 end
 
-
-
 def pull_up_saved_games
- puts "placeholder text"
+ puts "Your save game files are as follows:\n"
+ file_list =  Dir.glob('saved_games/*')
+ file_list.each_with_index do |file, idx|
+  idx += 1
+   puts "#{idx.to_s} #{file}"
+ end
+ puts "\nType the number for the file you would like to load:"
+ ans = gets.chomp
+ load_game(ans)
+end
+
+def load_game(ans)
 end
 
 def new_or_saved_game?
