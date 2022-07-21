@@ -13,7 +13,7 @@ class Game
   end
 
   def play_game
-    choose_word
+    @word = choose_word
     #tell them the progress of their word
     #tell them what they've already guessed
     #tell them how many guesses left

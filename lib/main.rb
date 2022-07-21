@@ -25,18 +25,7 @@ def save_game?(game1)
   end
 end
 
-def save_game(game1)
-  Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
 
-  time = Time.now.to_s
-  date = Date.today.to_s
-
-  filename = "saved_games/#{time}-#{date}-game.txt"
-
-  File.open(filename, 'w') do |file|
-    file.puts "hi"
-  end
-end
 
 def pull_up_saved_games
  puts "placeholder text"
@@ -59,7 +48,7 @@ def prompt
       puts "That wasn\'t a valid option".
       prompt
     end
-    save_game?(game1)
+    game1.save_game
   end
 end
 
