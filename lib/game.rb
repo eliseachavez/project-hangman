@@ -20,7 +20,7 @@ class Game
   end
 
   def choose_word
-    if word == nil
+    if @word == nil
       unfiltered_dictionary = File.open("google-10000-english-no-swears.txt", 'r').readlines.each do |line|
         @dictionary.push(line.chomp) if line.chomp.length > 5
       end
@@ -38,10 +38,10 @@ class Game
   def to_yaml
     #turn obj into a hash that is serialized with YAML
     YAML.dump({
-      :dictionary => @dictionary
-      :word_in_progress => @word_in_progress
-      :past_guesses = @past_guesses
-      :word = @word
+      :dictionary => @dictionary,
+      :word_in_progress => @word_in_progress,
+      :past_guesses => @past_guesses,
+      :word => @word
     })
   end
 

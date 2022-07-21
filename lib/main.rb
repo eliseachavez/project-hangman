@@ -34,12 +34,12 @@ def save_game(game1)
   filename = "saved_games/#{time}-#{date}-game.txt"
 
   File.open(filename, 'w') do |file|
-    puts "hi"
+    file.puts "hi"
   end
 end
 
 def pull_up_saved_games
-
+ puts "placeholder text"
 end
 
 def new_or_saved_game?
