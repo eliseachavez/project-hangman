@@ -1,5 +1,6 @@
 require_relative "print.rb"
 class Game
+  include Display
 
   def initialize
     @dictionary = []
