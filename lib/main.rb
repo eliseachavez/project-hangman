@@ -61,7 +61,6 @@ def prompt
       puts "That wasn\'t a valid option".
       prompt
     end
-    game1.save_game
   end
 end
 
