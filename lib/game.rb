@@ -1,5 +1,5 @@
 require_relative "display.rb"
-require 'yaml'
+require 'json'
 
 class Game
   include Display
@@ -35,9 +35,9 @@ class Game
     rand_num = rand(max_size)
   end
 
-  def to_yaml
+  def to_json
     #turn obj into a hash that is serialized with YAML
-    YAML.dump({
+    JSON.dump({
       :dictionary => @dictionary,
       :word_in_progress => @word_in_progress,
       :past_guesses => @past_guesses,
@@ -45,23 +45,23 @@ class Game
     })
   end
 
-  def from_yaml(string)
+  def from_json(string)
     #File.read reads a file into a string
     #turn string hash into obj
-    data = YAML.load string
-    @dictionary = data[:dictionary]
-    @word_in_progress = data[:word_in_progress]
-    @past_guesses = data[:past_guesses]
-    @word = data[:word]
+    data = JSON.load string
+    @dictionary = data['dictionary']
+    @word_in_progress = data['word_in_progress']
+    @past_guesses = data['past_guesses']
+    @word = data['word']
   end
 
-  def save_game(game1)
+  def save_game
     Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
 
     filename = "saved_games/#{Date.today.to_s}-game.txt"
 
     File.open(filename, 'w') do |file|
-      file.puts game1.to_yaml
+      file.puts self.to_json
     end
   end
 

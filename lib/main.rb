@@ -34,10 +34,13 @@ def pull_up_saved_games
  end
  puts "\nType the number for the file you would like to load:"
  ans = gets.chomp
- load_game(ans)
+ ans = ans.to_i
+ load_game(ans, file_list) unless ans > file_list.length
 end
 
-def load_game(ans)
+def load_game(ans, file_list)
+  ans -= 1
+  data = File.open(file_list[ans], 'r'){ |file| file.read}
 end
 
 def new_or_saved_game?
@@ -52,7 +55,8 @@ def prompt
     if option == "new"
       game1 = Game.new
     elsif option == "saved"
-      pull_up_saved_games
+      game1 = Game.new
+      game1.from_json(pull_up_saved_games)
     else
       puts "That wasn\'t a valid option".
       prompt
