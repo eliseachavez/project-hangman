@@ -20,13 +20,13 @@ class Game
     25.times do |guess|
       @player.make_guess
       @computer.grade_guess(@player.guess)
-      @board.print_word_progress(@computer.word_progress)
+      @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
 
       if win?
         print_win_message
         break
       end
-      if computer.wrong_guess_count > 7
+      if @computer.wrong_guess_count > 7
         print_youre_dead
         save_game?
         break
@@ -44,7 +44,7 @@ class Game
     end
   end
 
-  def save_game?(game1)
+  def save_game?
     puts "Would you like to save your game?\nType y for yes and n for no.\n"
     reply = gets.chomp.downcase
     if reply == "y"

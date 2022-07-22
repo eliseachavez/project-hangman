@@ -16,4 +16,22 @@ module Display
     puts "\nOh no! He's been hanged!\n"
   end
 
+  def print_hangman(hangman)
+    puts hangman
+  end
+
+  def print_guessed_word(word)
+    word.each do |c|
+      if c.nil?
+        print " _ "
+      else
+        print c
+      end
+    end
+  end
+
+  def print_remaining_words(guessed_alphabet)
+    puts "\n\nThe letters you have already used are #{guessed_alphabet}\n\n"
+  end
+
 end
