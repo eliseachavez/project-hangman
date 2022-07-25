@@ -69,6 +69,7 @@ class Game
   def load_game(ans, file_list)
     ans -= 1
     data = File.open(file_list[ans], 'r'){ |file| file.read}
+    from_json(data)
   end
 
   def win?
