@@ -42,8 +42,17 @@ module Display
     "\n\nYou have chosen to end the game. Thanks for playing!\n\n"
   end
 
-  def print_invalid_input_statement
-    puts "You did not type a y or a c; trying again."
+  def print_not_a_valid_option
+    puts "\n\nThat was not a valid option. Trying again.\n\n"
+  end
+
+  def print_saved_file_options
+    puts "\n\nYour save game files are as follows:\n"
+  end
+
+  def print_play_new_or_saved_game_prompt
+    puts "\n\nType \"new\" if you would like to play a new game, "\
+  " and \"saved\" if you would like to play a saved game.\n\n"
   end
 
 end

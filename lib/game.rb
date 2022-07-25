@@ -3,6 +3,8 @@ require_relative "board.rb"
 require_relative "computer.rb"
 require_relative "player.rb"
 require 'json'
+require 'time'
+require 'date'
 
 class Game
   include Display
@@ -17,6 +19,7 @@ class Game
 
   def play_game
     @computer.choose_word
+    new_or_saved_game?
 
     @turns.times do |guess|
       @player.make_guess
@@ -35,6 +38,37 @@ class Game
 
       game_continues?
     end
+  end
+
+  def new_or_saved_game?
+    print_play_new_or_saved_game_prompt
+    ans = gets.chomp
+
+    if ans == "saved"
+      pull_up_saved_games
+    elsif ans != "new" || ans != "saved"
+      print_not_a_valid_option
+      new_or_saved_game?
+    end
+  end
+
+  def pull_up_saved_games
+    print_saved_file_options
+
+    file_list =  Dir.glob('saved_games/*')
+    file_list.each_with_index do |file, idx|
+     idx += 1
+      puts "#{idx.to_s} #{file}"
+    end
+    puts "\nType the number for the file you would like to load:"
+    ans = gets.chomp
+    ans = ans.to_i
+    load_game(ans, file_list) unless ans > file_list.length
+  end
+
+  def load_game(ans, file_list)
+    ans -= 1
+    data = File.open(file_list[ans], 'r'){ |file| file.read}
   end
 
   def win?
@@ -95,10 +129,7 @@ class Game
       @turns = 0
       print_end_of_game_statement
     elsif ans != "y" || "c"
-      print_invalid_input_statement
-      def print_invalid_input_statement
-        puts "You did not type a y or a c; trying again."
-      end
+      print_not_a_valid_option
       game_continues?
     end
   end
