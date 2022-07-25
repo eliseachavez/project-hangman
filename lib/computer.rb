@@ -5,15 +5,15 @@ class Computer
   attr_reader :word, :guessed_alphabet, :word_progress, :wrong_guess_count
 
   def initialize(word=nil, guessed_alphabet=[], word_progress=[], wrong_guess_count=0)
-    @dictionary = []
     @word = word
+    @guessed_alphabet = guessed_alphabet
+    @word_progress = word_progress
+    @wrong_guess_count = wrong_guess_count
+    @dictionary = []
     @alphabet = ["a","b","c","d","e",
       "f","g","h","i","j","k","l","m",
       "n","o","p","q","r","s","t","u",
       "v","w","x","y","z"]
-    @guessed_alphabet = guessed_alphabet
-    @word_progress = word_progress
-    @wrong_guess_count = wrong_guess_count
   end
 
   def choose_word
