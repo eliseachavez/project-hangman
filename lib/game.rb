@@ -67,10 +67,10 @@ class Game
   def to_json
     #turn obj into a hash that is serialized with YAML
     JSON.dump({
-      :dictionary => @dictionary,
-      :word_in_progress => @word_in_progress,
-      :past_guesses => @past_guesses,
-      :word => @word
+      :word => @computer.word,
+      :guessed_alphabet => @computer.guessed_alphabet
+      :word_progress => @computer.word_progress,
+      :wrong_guess_count => @computer.wrong_guess_count
     })
   end
 
@@ -78,10 +78,10 @@ class Game
     #File.read reads a file into a string
     #turn string hash into obj
     data = JSON.load string
-    @dictionary = data['dictionary']
-    @word_in_progress = data['word_in_progress']
-    @past_guesses = data['past_guesses']
-    @word = data['word']
+    @computer.word = data['word']
+    @computer.guessed_alphabet = data['guessed_alphabet']
+    @computer.word_progress = data['word_progress']
+    @computer.wrong_guess_count = data['wrong_guess_count']
   end
 
 end
