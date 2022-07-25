@@ -7,17 +7,18 @@ require 'json'
 class Game
   include Display
 
-  def initialize(board=Board.new, computer=Computer.new, player=Player.new)
+  def initialize(board=Board.new, computer=Computer.new, player=Player.new, turns=25)
     @board = board
     @computer = computer
     @player = player
+    @turns = turns
     play_game
   end
 
   def play_game
     @computer.choose_word
-    turns = 25
-    turns.times do |guess|
+
+    @turns.times do |guess|
       @player.make_guess
       @computer.grade_guess(@player.guess)
       @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
@@ -28,11 +29,11 @@ class Game
       end
       if @computer.wrong_guess_count > 7
         print_youre_dead
-        turns = save_game?(turns)
+        save_game?
         break
       end
 
-      turns = save_game?(turns)
+      game_continues?
     end
   end
 
@@ -44,17 +45,17 @@ class Game
     end
   end
 
-  def save_game?(turns)
+  def save_game?
     puts "Would you like to save your game?\nType y for yes and n for no.\n"
     reply = gets.chomp.downcase
     if reply == "y"
-      save_game(turns)
+      save_game
     else
       return
     end
   end
 
-  def save_game(turns)
+  def save_game
     Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
 
     filename = "saved_games/#{Date.today.to_s}-game.txt"
@@ -62,8 +63,7 @@ class Game
     File.open(filename, 'w') do |file|
       file.puts self.to_json
     end
-
-    turns = 0
+    @turns = 0
   end
 
   def to_json
@@ -84,6 +84,23 @@ class Game
     @computer.guessed_alphabet = data['guessed_alphabet']
     @computer.word_progress = data['word_progress']
     @computer.wrong_guess_count = data['wrong_guess_count']
+  end
+
+  def game_continues?
+    # check if we have gone past 25 rounds
+    print_does_game_continue
+    ans = gets.chomp
+
+    if ans == "y"
+      @turns = 0
+      print_end_of_game_statement
+    elsif ans != "y" || "c"
+      print_invalid_input_statement
+      def print_invalid_input_statement
+        puts "You did not type a y or a c; trying again."
+      end
+      game_continues?
+    end
   end
 
 end

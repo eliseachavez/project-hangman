@@ -11,7 +11,6 @@ class Player
     ans = gets.chomp.downcase
 
     if alphabet.include?(ans) and ans.length == 1
-      puts "\nYou guessed #{ans}\n"
       @guess = ans.downcase
     else
         print_incorrect_guess_input_error

@@ -34,4 +34,16 @@ module Display
     puts "\n\nThe letters you have already used are #{guessed_alphabet}\n\n"
   end
 
+  def print_does_game_continue
+    puts "If you would like to end the game, type y; otherwise, type c to continue."
+  end
+
+  def print_end_of_game_statement
+    "\n\nYou have chosen to end the game. Thanks for playing!\n\n"
+  end
+
+  def print_invalid_input_statement
+    puts "You did not type a y or a c; trying again."
+  end
+
 end

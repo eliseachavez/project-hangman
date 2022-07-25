@@ -1,1 +1,1 @@
-{"word":"sticky","guessed_alphabet":["i"],"word_progress":[null,null,"i",null,null,null],"wrong_guess_count":0}
+{"word":"framed","guessed_alphabet":["i","e"],"word_progress":[null,null,null,null,"e",null],"wrong_guess_count":1}
