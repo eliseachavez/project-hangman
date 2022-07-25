@@ -16,8 +16,8 @@ class Game
 
   def play_game
     @computer.choose_word
-
-    25.times do |guess|
+    turns = 25
+    turns.times do |guess|
       @player.make_guess
       @computer.grade_guess(@player.guess)
       @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
@@ -28,11 +28,11 @@ class Game
       end
       if @computer.wrong_guess_count > 7
         print_youre_dead
-        save_game?
+        turns = save_game?(turns)
         break
       end
 
-      save_game?
+      turns = save_game?(turns)
     end
   end
 
@@ -44,17 +44,17 @@ class Game
     end
   end
 
-  def save_game?
+  def save_game?(turns)
     puts "Would you like to save your game?\nType y for yes and n for no.\n"
     reply = gets.chomp.downcase
     if reply == "y"
-      save_game
+      save_game(turns)
     else
       return
     end
   end
 
-  def save_game
+  def save_game(turns)
     Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
 
     filename = "saved_games/#{Date.today.to_s}-game.txt"
@@ -62,13 +62,15 @@ class Game
     File.open(filename, 'w') do |file|
       file.puts self.to_json
     end
+
+    turns = 0
   end
 
   def to_json
     #turn obj into a hash that is serialized with YAML
     JSON.dump({
       :word => @computer.word,
-      :guessed_alphabet => @computer.guessed_alphabet
+      :guessed_alphabet => @computer.guessed_alphabet,
       :word_progress => @computer.word_progress,
       :wrong_guess_count => @computer.wrong_guess_count
     })

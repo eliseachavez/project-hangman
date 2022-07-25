@@ -1,0 +1,1 @@
+{"word":"sticky","guessed_alphabet":["i"],"word_progress":[null,null,"i",null,null,null],"wrong_guess_count":0}
