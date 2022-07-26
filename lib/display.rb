@@ -1,7 +1,16 @@
 module Display
 
-  def print_greeting
+  def print_greeting_and_rules
     puts "The game has begun; welcome to Hangman"
+    puts "\n\n----------------\n"\
+    "RULES"
+    "------------"
+    "To play this game, you will guess the word before the stick figure is hanged.\n"\
+    "The word comes from a dictionary of 10000 English words, and all words will be 5 letters or "
+    "longer.\nA stick figure is hanged in 7 wrong guesses. This will end the game, as well as if you"\
+    "make more than 25 guesses -- wrong or right.\nEach turn you can either guess a letter or "\
+    "you can guess the entire word\n. You will have the option to quit and/or save the game at any time. "
+    "You can also start with a saved game. Good luck!"
   end
 
   def print_incorrect_guess_input_error
@@ -31,18 +40,18 @@ module Display
     end
   end
 
-  def print_remaining_words_and_wrong_guess_count(guessed_alphabet, wrong_guess_count)
+  def print_remaining_words(guessed_alphabet)
     puts "\nThe guesses you have already made are #{guessed_alphabet}"
   end
 
   def print_wrong_guess_count(wrong_guess_count)
     puts "Wrong guesses: #{wrong_guess_count}\n"
     wrong_guess_count = 7 - wrong_guess_count
-    puts "Guesses left: #{wrong_guess_count}"
+    puts "Wrong guesses left: #{wrong_guess_count}"
   end
 
   def print_turns_left(turns_left)
-    puts "Turns left: #{turns_left}"
+    puts "Total turns left: #{turns_left}"
   end
 
   def print_does_game_continue

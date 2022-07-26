@@ -21,8 +21,8 @@ class Game
 
   def play_game
     computer_chooses_word
-    print_board_data
     load_new_or_saved_game?
+    print_board_data
 
     while @playing do
       @turns_left -= 1
@@ -77,7 +77,7 @@ class Game
     @player.make_guess
   end
 
-  def computer_grade_guess
+  def computer_grades_guess
     @computer.grade_guess(@player.guess)
   end
 
