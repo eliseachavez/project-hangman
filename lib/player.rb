@@ -1,4 +1,5 @@
 class Player
+  include Display
   attr_reader :guess
 
   def initialize(guess=nil)

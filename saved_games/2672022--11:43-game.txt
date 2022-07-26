@@ -1,0 +1,1 @@
+{"word":"hewlett","guessed_alphabet":["a","e"],"word_progress":[null,"e",null,null,"e",null,null],"wrong_guess_count":1,"turns":23}
