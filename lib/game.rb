@@ -24,7 +24,7 @@ class Game
     new_or_saved_game?
 
     while @playing do
-      @turns += 1
+      @turns -= 1
       @player.make_guess
       @computer.grade_guess(@player.guess)
       @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
@@ -96,7 +96,7 @@ class Game
   def save_game
     Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
 
-    filename = "saved_games/#{Date.today.to_s}-game.txt"
+    filename = "saved_games/#{DateTime.now.strftime("%d%-m%-Y--%H:%M")}-game.txt"
 
     File.open(filename, 'w') do |file|
       file.puts self.to_json
@@ -133,7 +133,6 @@ class Game
 
     if ans == "y"
       save_game?
-      @turns = 0
       print_end_of_game_statement
       @playing = false
     elsif ans == "c"
