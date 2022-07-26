@@ -59,7 +59,7 @@ module Display
   end
 
   def print_end_of_game_statement
-    "\nYou have chosen to end the game. Thanks for playing!"
+    puts "\nYou have chosen to end the game. Thanks for playing!"
   end
 
   def print_not_a_valid_option
