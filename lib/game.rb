@@ -9,12 +9,12 @@ require 'date'
 class Game
   include Display
 
-  attr_accessor :turns
-  def initialize(board=Board.new, computer=Computer.new, player=Player.new, turns=25, playing=true)
+  attr_accessor :turns_left
+  def initialize(board=Board.new, computer=Computer.new, player=Player.new, turns_left=25, playing=true)
     @board = board
     @computer = computer
     @player = player
-    @turns = turns
+    @turns_left = turns_left
     @playing = playing
     play_game
   end
@@ -24,9 +24,8 @@ class Game
     print_board_data
     load_new_or_saved_game?
 
-
     while @playing do
-      @turns -= 1
+      @turns_left -= 1
       player_makes_guess
       computer_grades_guess
       print_board_data
@@ -117,7 +116,7 @@ class Game
       :guessed_alphabet => @computer.guessed_alphabet,
       :word_progress => @computer.word_progress,
       :wrong_guess_count => @computer.wrong_guess_count,
-      :turns => @turns
+      :turns_left => @turns_left
     })
   end
 
@@ -129,11 +128,11 @@ class Game
     @computer.guessed_alphabet = data['guessed_alphabet']
     @computer.word_progress = data['word_progress']
     @computer.wrong_guess_count = data['wrong_guess_count']
-    @turns = data['turns']
+    @turns_left = data['turns_left']
   end
 
   def print_board_data
-    @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
+    @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet, @turns_left)
   end
 
   def computer_chooses_word
@@ -154,7 +153,7 @@ class Game
     end
 
     # check if we have gone past 25 rounds
-    if @turns == 0
+    if @turns_left == 0
       print_out_of_turns
       @playing = false
     end

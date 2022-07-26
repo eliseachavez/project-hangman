@@ -1,1 +1,1 @@
-{"word":"creations","guessed_alphabet":["a","w","e","s","t","r","g","greatings"],"word_progress":[null,"r","e","a","t",null,null,null,"s"],"wrong_guess_count":3,"turns":-2}
+{"word":"creations","guessed_alphabet":["a","w","e","s","t","r","g","greatings"],"word_progress":[null,"r","e","a","t",null,null,null,"s"],"wrong_guess_count":3,"turns_left":20}

@@ -9,7 +9,7 @@ module Display
   end
 
   def print_win_message
-    rounds = 25 - @turns
+    rounds = 25 - @turns_left
     puts "\nYou won! The word was #{@computer.word} and you guessed it in #{rounds} turns."
   end
 
@@ -33,9 +33,16 @@ module Display
 
   def print_remaining_words_and_wrong_guess_count(guessed_alphabet, wrong_guess_count)
     puts "\nThe guesses you have already made are #{guessed_alphabet}"
+  end
+
+  def print_wrong_guess_count(wrong_guess_count)
     puts "Wrong guesses: #{wrong_guess_count}\n"
     wrong_guess_count = 7 - wrong_guess_count
     puts "Guesses left: #{wrong_guess_count}"
+  end
+
+  def print_turns_left(turns_left)
+    puts "Turns left: #{turns_left}"
   end
 
   def print_does_game_continue
