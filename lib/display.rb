@@ -1,7 +1,7 @@
 module Display
 
   def print_greeting_and_rules
-    puts "The game has begun; welcome to Hangman"\
+    puts "\nThe game has begun; welcome to Hangman"\
     "\n\n----------------"\
     "\nRULES"\
     "\n----------------"\
@@ -89,6 +89,10 @@ module Display
 
   def print_no_saved_files
     puts "\nLooks like there aren't any saved files. Starting new game!"
+  end
+
+  def print_save_statement(filename)
+    puts "\nFile was saved as #{filename} in the saved_games folder."
   end
 
 end

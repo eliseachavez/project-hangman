@@ -1,0 +1,1 @@
+{"word":"voluntary","guessed_alphabet":["a"],"word_progress":[null,null,null,null,null,null,"a",null,null],"wrong_guess_count":0,"turns_left":24}

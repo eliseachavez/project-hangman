@@ -108,6 +108,8 @@ class Game
     File.open(filename, 'w') do |file|
       file.puts self.to_json
     end
+
+    print_save_statement(filename)
   end
 
   def to_json

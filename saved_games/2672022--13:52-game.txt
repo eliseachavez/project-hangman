@@ -1,0 +1,1 @@
+{"word":"confirm","guessed_alphabet":["a","e"],"word_progress":[null,null,null,null,null,null,null],"wrong_guess_count":2,"turns_left":23}
