@@ -10,7 +10,7 @@ module Display
 
   def print_win_message
     rounds = 25 - @turns
-    puts "\nYou won! The word was #{@computer.word} and you guessed it in #{rounds}\n"
+    puts "\nYou won! The word was #{@computer.word} and you guessed it in #{rounds} turns.\n"
   end
 
   def print_youre_dead

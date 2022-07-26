@@ -35,6 +35,7 @@ class Computer
   def grade_guess(guess)
     # first check for whole word match
     if guess == @word
+      @word_progress = @word.split
     else
       if guess.length > 1 # was an incorrect word guess
         @wrong_guess_count += 1
