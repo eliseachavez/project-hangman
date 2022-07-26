@@ -10,11 +10,11 @@ module Display
 
   def print_win_message
     rounds = 25 - @turns
-    puts "\nYou won! The word was #{@computer.word} and you guessed it in #{rounds} turns.\n"
+    puts "\nYou won! The word was #{@computer.word} and you guessed it in #{rounds} turns."
   end
 
   def print_youre_dead
-    puts "\nOh no! He's been hanged!\n"
+    puts "\nOh no! He's been hanged!"
   end
 
   def print_hangman(hangman)
@@ -32,47 +32,47 @@ module Display
   end
 
   def print_remaining_words_and_wrong_guess_count(guessed_alphabet, wrong_guess_count)
-    puts "\n\nThe guesses you have already made are #{guessed_alphabet}"
+    puts "\nThe guesses you have already made are #{guessed_alphabet}"
     puts "Wrong guesses: #{wrong_guess_count}\n"
     wrong_guess_count = 7 - wrong_guess_count
     puts "Guesses left: #{wrong_guess_count}"
   end
 
   def print_does_game_continue
-    puts "If you would like to end the game, type y; otherwise, type c to continue."
+    puts "\nIf you would like to end the game, type y; otherwise, type c to continue."
   end
 
   def print_end_of_game_statement
-    "\n\nYou have chosen to end the game. Thanks for playing!\n"
+    "\nYou have chosen to end the game. Thanks for playing!"
   end
 
   def print_not_a_valid_option
-    puts "\n\nThat was not a valid option. Trying again.\n"
+    puts "\nThat was not a valid option. Trying again."
   end
 
   def print_saved_file_options
-    puts "\n\nYour save game files are as follows:\n"
+    puts "\nYour save game files are as follows:"
   end
 
   def print_play_new_or_saved_game_prompt
-    puts "\n\nType \"new\" if you would like to play a new game, "\
-  " and \"saved\" if you would like to play a saved game.\n"
+    puts "\nType \"new\" if you would like to play a new game, "\
+  " and \"saved\" if you would like to play a saved game."
   end
 
   def print_out_of_turns
-    puts "\n\nSorry, you're out of turns. Ending game.\n"
+    puts "\nSorry, you're out of turns. Ending game."
   end
 
   def print_whole_word_or_letter_guess
-    puts "\n\nWould you like to guess a letter or the word? Type \"l\" for letter and \"w\" for word\n"
+    puts "\nWould you like to guess a letter or the word? Type \"l\" for letter and \"w\" for word:"
   end
 
   def print_make_whole_word_guess
-    puts "\n\nType your guess:"
+    puts "\nType your guess:"
   end
 
   def print_no_saved_files
-    puts "\nLooks like there aren't any saved files. Starting new game!!"
+    puts "\nLooks like there aren't any saved files. Starting new game!"
   end
 
 end
