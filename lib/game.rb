@@ -95,8 +95,11 @@ class Game
     reply = gets.chomp.downcase
     if reply == "y"
       save_game
-    else
+    elsif reply == "n"
       return
+    else
+      print_not_a_valid_option
+      save_game
     end
   end
 
