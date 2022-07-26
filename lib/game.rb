@@ -39,7 +39,7 @@ class Game
 
     if ans == "saved"
       pull_up_saved_games
-    elsif ans != "new" || ans != "saved"
+    elsif ans != "new"
       print_not_a_valid_option
       new_or_saved_game?
     end
