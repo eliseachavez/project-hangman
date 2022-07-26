@@ -99,7 +99,7 @@ class Game
       return
     else
       print_not_a_valid_option
-      save_game
+      save_game?
     end
   end
 

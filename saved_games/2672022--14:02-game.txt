@@ -1,0 +1,1 @@
+{"word":"publishing","guessed_alphabet":["b"],"word_progress":[null,null,"b",null,null,null,null,null,null,null],"wrong_guess_count":0,"turns_left":24}
