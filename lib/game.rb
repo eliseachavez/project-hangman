@@ -129,7 +129,7 @@ class Game
     end
 
     # have we exceeded number of wrong guesses?
-    if @computer.wrong_guess_count > 7
+    if @computer.wrong_guess_count >= 7
       print_youre_dead
       @playing = false
     end
@@ -144,16 +144,19 @@ class Game
     print_does_game_continue
     ans = gets.chomp
 
-    if ans == "y"
-      save_game?
-      print_end_of_game_statement
-      @playing = false
-    elsif ans == "c"
-      save_game?
-    else
-      print_not_a_valid_option
-      game_continues?
+    if @playing
+      if ans == "y"
+        save_game?
+        print_end_of_game_statement
+        @playing = false
+      elsif ans == "c"
+        save_game?
+      else
+        print_not_a_valid_option
+        game_continues?
+      end
     end
+
   end
 
 end
