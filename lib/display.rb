@@ -9,7 +9,7 @@ module Display
   end
 
   def print_win_message
-    puts "\nYou won! The word was #{@computer.word} and you guessed it in #{@num_guesses}\n"
+    puts "\nYou won! The word was #{@computer.word} and you guessed it in #{@turns}\n"
   end
 
   def print_youre_dead

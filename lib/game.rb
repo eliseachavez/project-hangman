@@ -22,6 +22,7 @@ class Game
     new_or_saved_game?
 
     @turns.times do |guess|
+      turns += 1
       @player.make_guess
       @computer.grade_guess(@player.guess)
       @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
@@ -128,9 +129,12 @@ class Game
     ans = gets.chomp
 
     if ans == "y"
+      save_game?
       @turns = 0
       print_end_of_game_statement
-    elsif ans != "y" || "c"
+    elsif ans == "c"
+      save_game?
+    else
       print_not_a_valid_option
       game_continues?
     end
