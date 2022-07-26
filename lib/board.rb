@@ -66,7 +66,7 @@ class Board
   def print_word_progress(word, wrong_guess_count, guessed_alphabet)
     print_hangman(@hangman_series[wrong_guess_count])
     print_guessed_word(word)
-    print_remaining_words(guessed_alphabet)
+    print_remaining_words_and_wrong_guess_count(guessed_alphabet, wrong_guess_count)
   end
 
 end

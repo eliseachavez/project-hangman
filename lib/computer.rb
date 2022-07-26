@@ -33,13 +33,21 @@ class Computer
   end
 
   def grade_guess(guess)
-    @word.each_char.with_index do |char, idx|
-      @word_progress[idx] = guess if char == guess
+    # first check for whole word match
+    if guess == @word
+    else
+      if guess.length > 1 # was an incorrect word guess
+        @wrong_guess_count += 1
+        @guessed_alphabet.push(guess) unless @guessed_alphabet.include?(guess)
+      else # is a letter guess
+        @word.each_char.with_index do |char, idx|
+          @word_progress[idx] = guess if char == guess
+        end
+
+        @wrong_guess_count += 1 if !@word.include?(guess)
+        @guessed_alphabet.push(guess) unless @guessed_alphabet.include?(guess)
+      end
     end
-
-    @wrong_guess_count += 1 if !@word.include?(guess)
-
-    @guessed_alphabet.push(guess) unless @guessed_alphabet.include?(guess)
   end
 
 end

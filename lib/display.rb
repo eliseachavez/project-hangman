@@ -30,8 +30,9 @@ module Display
     end
   end
 
-  def print_remaining_words(guessed_alphabet)
-    puts "\n\nThe letters you have already used are #{guessed_alphabet}\n\n"
+  def print_remaining_words_and_wrong_guess_count(guessed_alphabet, wrong_guess_count)
+    puts "\n\nThe guesses you have already made are #{guessed_alphabet}"
+    puts "\n\nYou have made #{wrong_guess_count} wrong guesses.\n"
   end
 
   def print_does_game_continue
@@ -57,6 +58,14 @@ module Display
 
   def print_out_of_turns
     puts "\n\nSorry, you're out of turns. Ending game.\n\n"
+  end
+
+  def print_whole_word_or_letter_guess
+    puts "\n\nWould you like to guess a letter or the word? Type "l" for letter and "w" for word\n"
+  end
+
+  def print_make_whole_word_guess
+    puts "\n\nType your guess"
   end
 
 end

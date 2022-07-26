@@ -141,10 +141,10 @@ class Game
     end
 
     # now ask if player would like to continue game or not (then prompt to save)
-    print_does_game_continue
-    ans = gets.chomp
-
     if @playing
+      print_does_game_continue
+      ans = gets.chomp
+
       if ans == "y"
         save_game?
         print_end_of_game_statement
