@@ -1,4 +1,8 @@
 ## Project Hangman
+
+From The Odin Project's Ruby curriculum
+
+##### Description
 Create a command-line hangman game where one player plays against the computer.
 
 #### Scenarios that were tested:
