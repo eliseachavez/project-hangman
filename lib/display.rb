@@ -55,4 +55,8 @@ module Display
   " and \"saved\" if you would like to play a saved game.\n\n"
   end
 
+  def print_out_of_turns
+    puts "\n\nSorry, you're out of turns. Ending game.\n\n"
+  end
+
 end

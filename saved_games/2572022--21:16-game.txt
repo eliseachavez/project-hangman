@@ -1,0 +1,1 @@
+{"word":"framed","guessed_alphabet":["i","e","a","t","v","y"],"word_progress":[null,null,"a",null,"e",null],"wrong_guess_count":4,"turns":-1}

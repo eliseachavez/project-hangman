@@ -29,16 +29,6 @@ class Game
       @computer.grade_guess(@player.guess)
       @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
 
-      if win?
-        print_win_message
-        break
-      end
-      if @computer.wrong_guess_count > 7
-        print_youre_dead
-        save_game?
-        break
-      end
-
       game_continues?
     end
   end
@@ -127,7 +117,25 @@ class Game
   end
 
   def game_continues?
+    # have we won?
+    if win?
+      print_win_message
+      @playing = false
+    end
+
+    # have we exceeded number of wrong guesses?
+    if @computer.wrong_guess_count > 7
+      print_youre_dead
+      @playing = false
+    end
+
     # check if we have gone past 25 rounds
+    if @turns == 0
+      print_out_of_turns
+      @playing = false
+    end
+
+    # now ask if player would like to continue game or not (then prompt to save)
     print_does_game_continue
     ans = gets.chomp
 
