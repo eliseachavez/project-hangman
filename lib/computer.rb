@@ -2,7 +2,7 @@ require_relative "display.rb"
 
 class Computer
   include Display
-  attr_reader :word, :guessed_alphabet, :word_progress, :wrong_guess_count
+  attr_accessor :word, :guessed_alphabet, :word_progress, :wrong_guess_count
 
   def initialize(word=nil, guessed_alphabet=[], word_progress=[], wrong_guess_count=0)
     @word = word

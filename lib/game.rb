@@ -119,6 +119,7 @@ class Game
     @computer.guessed_alphabet = data['guessed_alphabet']
     @computer.word_progress = data['word_progress']
     @computer.wrong_guess_count = data['wrong_guess_count']
+    @turns = data['turns']
   end
 
   def game_continues?
