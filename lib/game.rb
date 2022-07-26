@@ -20,25 +20,22 @@ class Game
   end
 
   def play_game
-    @computer.choose_word
-    new_or_saved_game?
+    computer_chooses_word
+    print_board_data
+    load_new_or_saved_game?
 
 
     while @playing do
-      if @turns == 25
-        @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
-      end
-
       @turns -= 1
-      @player.make_guess
-      @computer.grade_guess(@player.guess)
-      @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
+      player_makes_guess
+      computer_grades_guess
+      print_board_data
 
-      game_continues?
+      does_game_continue?
     end
   end
 
-  def new_or_saved_game?
+  def load_new_or_saved_game?
     print_play_new_or_saved_game_prompt
     ans = gets.chomp
 
@@ -46,7 +43,7 @@ class Game
       pull_up_saved_games
     elsif ans != "new"
       print_not_a_valid_option
-      new_or_saved_game?
+      load_new_or_saved_game?
     end
   end
 
@@ -72,6 +69,17 @@ class Game
     ans -= 1
     data = File.open(file_list[ans], 'r'){ |file| file.read}
     from_json(data)
+
+    # get the printout to see what data you're working with
+    print_board_data
+  end
+
+  def player_makes_guess
+    @player.make_guess
+  end
+
+  def computer_grade_guess
+    @computer.grade_guess(@player.guess)
   end
 
   def win?
@@ -100,7 +108,6 @@ class Game
     File.open(filename, 'w') do |file|
       file.puts self.to_json
     end
-    @turns = 0
   end
 
   def to_json
@@ -125,7 +132,15 @@ class Game
     @turns = data['turns']
   end
 
-  def game_continues?
+  def print_board_data
+    @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
+  end
+
+  def computer_chooses_word
+    @computer.choose_word
+  end
+
+  def does_game_continue?
     # have we won?
     if win?
       print_win_message
@@ -157,7 +172,7 @@ class Game
         save_game?
       else
         print_not_a_valid_option
-        game_continues?
+        does_game_continue?
       end
     end
 
