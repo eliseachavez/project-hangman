@@ -23,7 +23,12 @@ class Game
     @computer.choose_word
     new_or_saved_game?
 
+
     while @playing do
+      if @turns == 25
+        @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
+      end
+
       @turns -= 1
       @player.make_guess
       @computer.grade_guess(@player.guess)
