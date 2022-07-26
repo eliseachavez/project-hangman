@@ -54,14 +54,18 @@ class Game
     print_saved_file_options
 
     file_list =  Dir.glob('saved_games/*')
-    file_list.each_with_index do |file, idx|
-     idx += 1
-      puts "#{idx.to_s} #{file}"
+    if file_list.length == 0
+      print_no_saved_files
+    else
+      file_list.each_with_index do |file, idx|
+      idx += 1
+        puts "#{idx.to_s} #{file}"
+      end
+      puts "\nType the number for the file you would like to load:"
+      ans = gets.chomp
+      ans = ans.to_i
+      load_game(ans, file_list) unless ans > file_list.length
     end
-    puts "\nType the number for the file you would like to load:"
-    ans = gets.chomp
-    ans = ans.to_i
-    load_game(ans, file_list) unless ans > file_list.length
   end
 
   def load_game(ans, file_list)

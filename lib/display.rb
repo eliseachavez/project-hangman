@@ -71,4 +71,8 @@ module Display
     puts "\n\nType your guess:"
   end
 
+  def print_no_saved_files
+    puts "\nLooks like there aren't any saved files."
+  end
+
 end
