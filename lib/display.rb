@@ -72,7 +72,7 @@ module Display
   end
 
   def print_no_saved_files
-    puts "\nLooks like there aren't any saved files."
+    puts "\nLooks like there aren't any saved files. Starting new game!!"
   end
 
 end

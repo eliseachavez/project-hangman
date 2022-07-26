@@ -22,8 +22,8 @@ class Player
       end
     else # whole word guess!
       print_make_whole_word_guess
-      @guess = ans = gets.chomp.downcase
-
+      ans = gets.chomp.downcase
+      @guess = ans
     end
   end
 
