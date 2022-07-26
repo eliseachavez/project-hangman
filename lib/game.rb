@@ -22,6 +22,7 @@ class Game
   def play_game
     computer_chooses_word
     load_new_or_saved_game?
+    print_greeting_and_rules
     print_board_data
 
     while @playing do

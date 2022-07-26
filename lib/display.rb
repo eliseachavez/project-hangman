@@ -1,16 +1,16 @@
 module Display
 
   def print_greeting_and_rules
-    puts "The game has begun; welcome to Hangman"
-    puts "\n\n----------------\n"\
-    "RULES"
-    "------------"
-    "To play this game, you will guess the word before the stick figure is hanged.\n"\
-    "The word comes from a dictionary of 10000 English words, and all words will be 5 letters or "
-    "longer.\nA stick figure is hanged in 7 wrong guesses. This will end the game, as well as if you"\
-    "make more than 25 guesses -- wrong or right.\nEach turn you can either guess a letter or "\
-    "you can guess the entire word\n. You will have the option to quit and/or save the game at any time. "
-    "You can also start with a saved game. Good luck!"
+    puts "The game has begun; welcome to Hangman"\
+    "\n\n----------------"\
+    "\nRULES"\
+    "\n----------------"\
+    "\nTo play this game, you will guess the word before the stick figure is hanged.\n"\
+    "\nThe word comes from a dictionary of 10000 English words, and all words will be "\
+    "\n5 letters or longer. A stick figure is hanged in 7 wrong guesses. This will end "\
+    "\nthe game, as well as if you exceed 25 guesses -- wrong or right. Each turn, you "\
+    "\ncan either guess a letter or you can guess the entire word."\
+    "\nGood luck!"
   end
 
   def print_incorrect_guess_input_error
