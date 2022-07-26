@@ -9,7 +9,8 @@ module Display
   end
 
   def print_win_message
-    puts "\nYou won! The word was #{@computer.word} and you guessed it in #{@turns}\n"
+    rounds = 25 - @turns
+    puts "\nYou won! The word was #{@computer.word} and you guessed it in #{rounds}\n"
   end
 
   def print_youre_dead
@@ -32,7 +33,9 @@ module Display
 
   def print_remaining_words_and_wrong_guess_count(guessed_alphabet, wrong_guess_count)
     puts "\n\nThe guesses you have already made are #{guessed_alphabet}"
-    puts "\n\nYou have made #{wrong_guess_count} wrong guesses.\n"
+    puts "Wrong guesses: #{wrong_guess_count}\n"
+    wrong_guess_count = 7 - wrong_guess_count
+    puts "Guesses left: #{wrong_guess_count}"
   end
 
   def print_does_game_continue
@@ -40,11 +43,11 @@ module Display
   end
 
   def print_end_of_game_statement
-    "\n\nYou have chosen to end the game. Thanks for playing!\n\n"
+    "\n\nYou have chosen to end the game. Thanks for playing!\n"
   end
 
   def print_not_a_valid_option
-    puts "\n\nThat was not a valid option. Trying again.\n\n"
+    puts "\n\nThat was not a valid option. Trying again.\n"
   end
 
   def print_saved_file_options
@@ -53,11 +56,11 @@ module Display
 
   def print_play_new_or_saved_game_prompt
     puts "\n\nType \"new\" if you would like to play a new game, "\
-  " and \"saved\" if you would like to play a saved game.\n\n"
+  " and \"saved\" if you would like to play a saved game.\n"
   end
 
   def print_out_of_turns
-    puts "\n\nSorry, you're out of turns. Ending game.\n\n"
+    puts "\n\nSorry, you're out of turns. Ending game.\n"
   end
 
   def print_whole_word_or_letter_guess
