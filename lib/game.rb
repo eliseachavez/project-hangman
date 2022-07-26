@@ -9,11 +9,13 @@ require 'date'
 class Game
   include Display
 
-  def initialize(board=Board.new, computer=Computer.new, player=Player.new, turns=25)
+  attr_accessor :turns
+  def initialize(board=Board.new, computer=Computer.new, player=Player.new, turns=25, playing=true)
     @board = board
     @computer = computer
     @player = player
     @turns = turns
+    @playing = playing
     play_game
   end
 
@@ -21,8 +23,8 @@ class Game
     @computer.choose_word
     new_or_saved_game?
 
-    @turns.times do |guess|
-      turns += 1
+    while @playing do
+      @turns += 1
       @player.make_guess
       @computer.grade_guess(@player.guess)
       @board.print_word_progress(@computer.word_progress, @computer.wrong_guess_count, @computer.guessed_alphabet)
@@ -108,7 +110,8 @@ class Game
       :word => @computer.word,
       :guessed_alphabet => @computer.guessed_alphabet,
       :word_progress => @computer.word_progress,
-      :wrong_guess_count => @computer.wrong_guess_count
+      :wrong_guess_count => @computer.wrong_guess_count,
+      :turns => @turns
     })
   end
 
@@ -132,6 +135,7 @@ class Game
       save_game?
       @turns = 0
       print_end_of_game_statement
+      @playing = false
     elsif ans == "c"
       save_game?
     else
