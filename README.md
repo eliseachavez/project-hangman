@@ -2,8 +2,11 @@
 
 This project is from The Odin Project's Ruby curriculum and was meant to apply learning on serialization and File IO.
 
-##### Description
+#### Description
 Create a command-line hangman game where one player plays against the computer.
+
+#### Run it on Replit!
+[![Run on Repl.it](https://repl.it/badge/github/eliseachavez/project-hangman)](https://repl.it/github/eliseachavez/project-hangman)
 
 #### Scenarios that were tested:
 - Tested incorrect user input and how it was handled by program
