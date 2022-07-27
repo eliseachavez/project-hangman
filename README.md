@@ -1,6 +1,6 @@
 ## Project Hangman
 
-From The Odin Project's Ruby curriculum
+This project is from The Odin Project's Ruby curriculum and was meant to apply learning on serialization and File IO.
 
 ##### Description
 Create a command-line hangman game where one player plays against the computer.
